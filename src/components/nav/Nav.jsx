@@ -1,41 +1,29 @@
 import React, { useState } from "react";
 import style from "./Nav.module.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
 
 function Nav() {
-  const navigate = useNavigate();
-  const [courses, setCourses] = useState(true)
-  const handleCourses = ()=>{
-    navigate("/courses")
-    if(courses){
-
-      setCourses(!courses);
-    }
-  }
-
-  const handleLogo = ()=>{
-    navigate("/")
-    if(!courses){
-
-      setCourses(!courses)
-    }
-  }
 
   return (
     <>
     <nav>
       <div className={style.nav_container}>
         <div className={style.nav_title_wrapper}>
-          <img
-            className={style.logo}
-            src="https://files.codingninjas.in/pl-ninja-16706.svg"
-            alt="logo"
-            onClick={handleLogo}
-          />
+          <Link to="/">
+            <img
+              className={style.logo}
+              src="https://files.codingninjas.in/pl-ninja-16706.svg"
+              alt="logo"
+            />
+          </Link>
           <h4>Coding Ninjas</h4>
         </div>
         <div className={style.nav_details}>
-          <button onClick={handleCourses}>{courses? "Courses" : "onCourses"}</button>
+          <button >
+            <NavLink to="/courses">
+              {({isActive}) => isActive? "onCourses" : "Courses"}
+            </NavLink>
+          </button>
         </div>
       </div>
     </nav>
