@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import style from "./Nav.module.css";
-import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
+import { NavLink, Outlet, Link } from "react-router-dom";
 
 function Nav() {
 
